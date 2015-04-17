@@ -1,5 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
+/*
+** This program copies its standard input to the standart output, 
+** and computes a checksum of the characters.
+** The checksum is printed after the input.
+*/
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,19 +12,17 @@
 int
 main(void)
 {
-	signed char checksum;
+	signed char checksum = -1;
 	int ch;
 
+	/*
+	** Read the characters one by one, and add them to checksum
+	*/
 	while ((ch = getchar()) != EOF) {
-		checksum = -1;
-		while (ch != '\n') {
-			checksum += (signed char)ch;
-			putchar(ch);
-			ch = getchar();
-		}
-		printf("\n");
-		printf("%d\n", checksum);
+		putchar(ch);
+		checksum += ch;
 	}
+	printf("%d\n", checksum);
 
 	getchar();
 
