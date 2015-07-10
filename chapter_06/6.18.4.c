@@ -4,17 +4,18 @@
 #include <string.h>
 #define TRUE 0
 #define FALSE 1
+typedef unsigned char uchar;
 
-char * primeNumbersBySieveOfEratosthenes(size_t n);
+uchar * primeNumbersBySieveOfEratosthenes(size_t n);
 
 int
 main(int argc, char *argv[])
 {
 	int i;
-	char *num = primeNumbersBySieveOfEratosthenes(10000);
+	uchar *num = primeNumbersBySieveOfEratosthenes(10000);
 	for (i = 2; i <= 10000; ++i)
 	{
-		if (num[i] == TRUE)
+		if (*(num + i) == TRUE)
 		{
 			printf("%7d ", i);
 		}
@@ -24,14 +25,14 @@ main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-char * 
+uchar * 
 primeNumbersBySieveOfEratosthenes(size_t n)
 {
 	/* 初始化素数数组 */
-	char* num = (char*)malloc(sizeof(char) * n);
+	uchar* num = (uchar*)malloc(sizeof(uchar) * n);
 	for (size_t i = 2; i < n; ++i)
 	{
-		num[i] = TRUE;
+		*(num + i) = TRUE;
 	}
 	/* 按照埃拉托斯特尼筛法，将为基数的倍数的所有数标记为非素数 */
 	size_t i = 2;
@@ -39,12 +40,12 @@ primeNumbersBySieveOfEratosthenes(size_t n)
 	{
 		for (size_t c = 2, idx = 2 * i; idx < n ; ++c, idx = i * c)
 		{
-			num[idx] = FALSE;
+			*(num + idx) = FALSE;
 		}
 		do
 		{
 			++i;
-		} while (i * i <= n && num[i] == FALSE);
+		} while (i * i <= n && *(num + i) == FALSE);
 	}
 	return num;
 }
