@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define NUL '\0'
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -22,8 +23,10 @@ ascii_to_integer(char *string)
 {
 	int result = 0;
 
-	while (*string != NUL) {
-		if (!isdigit(*string)) {
+	while (*string != NUL)
+	{
+		if (!isdigit(*string))
+		{
 			return 0;
 		}
 		result = result * 10 + (*string - '0');

@@ -22,8 +22,10 @@ max_list(int x1, ...)
 	int temp;
 	va_list va;
 	va_start(va, x1);
-	while ((temp = va_arg(va, int)) > 0) {
-		if (temp > max) {
+	while ((temp = va_arg(va, int)) > 0)
+	{
+		if (temp > max)
+		{
 			max = temp;
 		}
 	}

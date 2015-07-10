@@ -17,13 +17,17 @@ main(int argc, char *argv[])
 int
 gcd(int m, int n)
 {
-	if (m <= 0 || n <= 0) {
+	int p = m % n;
+	if (m <= 0 || n <= 0)
+	{
 		return 0;
 	}
-	if (m % n == 0) {
+	if (p == 0) 
+	{
 		return n;
 	}
-	else {
-		return gcd(n, m % n);
+	else 
+	{
+		return gcd(n, p);
 	}
 }
