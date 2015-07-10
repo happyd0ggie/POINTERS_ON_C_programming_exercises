@@ -6,10 +6,11 @@ int
 hermite(int n, int x);
 
 int
-main(int argc, char *argv[])
+main(int argc, char **argv)
 {
 	int i;
-	for (i = 0; i <= 30; i++) {
+	for (i = 0; i <= 30; i++)
+	{
 		printf("%d\n", hermite(i, 10));
 	}
 
@@ -20,13 +21,16 @@ main(int argc, char *argv[])
 int
 hermite(int n, int x)
 {
-	if (n <= 0) {
+	if (n <= 0)
+	{
 		return 1;
 	}
-	else if (1 == n) {
+	else if (1 == n)
+	{
 		return 2 * x;
 	}
-	else {
+	else
+	{
 		return 2 * x * hermite(n - 1, x) - 2 * (n - 1) * hermite(n - 2, x);
 	}
 }
